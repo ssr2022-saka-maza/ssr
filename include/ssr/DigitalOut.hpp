@@ -23,10 +23,13 @@ public:
      * @param PinType pin 接続ピン
      * @param bool value 初期値 デフォルトはfalse(LOW)
      */
-    DigitalOut(PinType pin, bool value = false);
+    DigitalOut(PinType pin);
 
-    // 全体のsetup()でこれを呼び出すこと
-    void setup();
+    /**
+     * ピンの初期設定。全体のsetup()でこれを呼び出すこと
+     * @param bool value 初期値 デフォルトはfalse(LOW)
+     */
+    void begin(bool value = false);
 
     /**
      * 最後に設定した値を返す

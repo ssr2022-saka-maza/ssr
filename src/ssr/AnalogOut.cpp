@@ -1,12 +1,12 @@
 #include <Arduino.h>
 #include "ssr/AnalogOut.hpp"
 
-ssr::AnalogOut::AnalogOut(ssr::PinType pin, uint16_t value)
-: _value(value), pin(pin) {}
+ssr::AnalogOut::AnalogOut(ssr::PinType pin)
+: _value(0), pin(pin) {}
 
-void ssr::AnalogOut::setup() {
+void ssr::AnalogOut::begin(uint16_t value) {
     pinMode(pin, OUTPUT);
-    analogWrite(pin, _value);
+    setValue(value);
 }
 
 void ssr::AnalogOut::setValue(uint16_t value) {

@@ -1,12 +1,12 @@
 #include <Arduino.h>
 #include "ssr/DigitalOut.hpp"
 
-ssr::DigitalOut::DigitalOut(PinType pin, bool value)
-: _value(value), pin(pin) {}
+ssr::DigitalOut::DigitalOut(PinType pin)
+: _value(false), pin(pin) {}
 
-void ssr::DigitalOut::setup() {
+void ssr::DigitalOut::begin(bool value) {
     pinMode(pin, OUTPUT);
-    digitalWrite(pin, _value);
+    setValue(value);
 }
 
 bool ssr::DigitalOut::getValue() {

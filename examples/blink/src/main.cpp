@@ -4,7 +4,7 @@
 ssr::DigitalOut outPin(LED_BUILTIN);
 
 void setup() {
-    outPin.setup();
+    outPin.begin();
 }
 
 void loop() {

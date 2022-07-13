@@ -22,12 +22,14 @@ public:
     /**
      * 初期化子
      * @param PinType pin 接続ピン
+     */
+    AnalogOut(PinType pin);
+
+    /**
+     * ピンの初期設定。全体のsetup()内でこれを呼び出すこと
      * @param uint16_t value 初期値。デフォルトは0
      */
-    AnalogOut(PinType pin, uint16_t value = 0);
-
-    // 全体のsetup()内でこれを呼び出すこと
-    void setup();
+    void begin(uint16_t value = 0);
 
     /**
      * 値を出力する

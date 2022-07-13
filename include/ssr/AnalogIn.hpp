@@ -20,8 +20,8 @@ public:
      * @param PinType pin 接続ピン
      */
     AnalogIn(PinType pin);
-    // 全体のsetup()内でこれを呼び出すこと
-    void setup();
+    // ピンの初期設定。全体のsetup()内でこれを呼び出すこと
+    void begin();
     /**
      * 接続したピンの値を読む
      * @return uint16_t 読んだ値
