@@ -33,7 +33,7 @@ public:
 
     /**
      * 値を出力する
-     * @param uint16_t value 出力値
+     * @param uint16_t value 出力値。範囲は0~255
      */
     void setValue(uint16_t value);
 

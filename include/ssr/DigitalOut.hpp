@@ -39,7 +39,7 @@ public:
 
     /**
      * 値を設定する
-     * @param bool value 設定する値
+     * @param bool value 設定する値。trueでHIGH, falseでLOW
      */
     void setValue(bool value);
 
