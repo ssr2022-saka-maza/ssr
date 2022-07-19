@@ -28,9 +28,9 @@ public:
      * @param PinType pwm3 モーター3につなげるPWMピンの番号
      */
     LowerBody(
-        PinType di1, PinType pwm1,
-        PinType di2, PinType pwm2,
-        PinType di3, PinType pwm3
+        PinType dir1, PinType pwm1,
+        PinType dir2, PinType pwm2,
+        PinType dir3, PinType pwm3
     );
 
     /**
