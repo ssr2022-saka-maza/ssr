@@ -5,12 +5,13 @@
 
 #include <Arduino.h>
 #include "ssr/Types.hpp"
+#include "ssr/Input.hpp"
 
 // このライブラリが使う名前空間
 namespace ssr {
 
 // デジタル入力ピンを扱う
-class DigitalIn {
+class DigitalIn : Input<bool> {
 public:
     // 接続ピン
     const PinType pin;
@@ -26,7 +27,7 @@ public:
      * 接続したピンの値を読む
      * @return bool HIGHならtrue
      */
-    bool read();
+    bool read() override;
 };
 
 }

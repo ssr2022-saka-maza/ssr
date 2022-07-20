@@ -5,12 +5,13 @@
 
 #include <Arduino.h>
 #include "ssr/Types.hpp"
+#include "ssr/Input.hpp"
 
 // このライブラリが使う名前空間
 namespace ssr {
 
 // アナログ入力ピンを扱う
-class AnalogIn {
+class AnalogIn : public Input<uint16_t> {
 public:
     // 接続ピン
     const PinType pin;
@@ -26,7 +27,7 @@ public:
      * 接続したピンの値を読む
      * @return uint16_t 読んだ値
      */
-    uint16_t read();
+    uint16_t read() override;
 };
 
 }
