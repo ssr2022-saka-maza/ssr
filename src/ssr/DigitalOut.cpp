@@ -18,6 +18,10 @@ void ssr::DigitalOut::setValue(bool value) {
     digitalWrite(pin, _value);
 }
 
+void ssr::DigitalOut::write(bool value) {
+    setValue(value);
+}
+
 void ssr::DigitalOut::toggle() {
     setValue(!_value);
 }

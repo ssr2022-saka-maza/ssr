@@ -17,3 +17,7 @@ void ssr::AnalogOut::setValue(uint16_t value) {
 uint16_t ssr::AnalogOut::getValue() {
     return _value;
 }
+
+void ssr::AnalogOut::write(uint16_t value) {
+    setValue(value);
+}

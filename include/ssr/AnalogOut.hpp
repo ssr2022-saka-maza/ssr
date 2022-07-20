@@ -5,12 +5,13 @@
 
 #include <Arduino.h>
 #include "ssr/Types.hpp"
+#include "ssr/Output.hpp"
 
 // このライブラリが使う名前空間
 namespace ssr {
 
 // アナログ出力ピンを扱う
-class AnalogOut {
+class AnalogOut : public Output<uint16_t> {
 private:
     // ピンに出力した値
     uint16_t _value;
@@ -42,6 +43,12 @@ public:
      * @return 最後に出力した値
      */
     uint16_t getValue();
+
+    /**
+     * 値を出力する
+     * @param uint16_t value 出力する値
+     */
+    void write(uint16_t value) override;
 };
 
 }

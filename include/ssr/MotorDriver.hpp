@@ -6,12 +6,13 @@
 #include <Arduino.h>
 #include "ssr/AnalogOut.hpp"
 #include "ssr/DigitalOut.hpp"
+#include "ssr/Output.hpp"
 
 // このライブラリが使う名前空間
 namespace ssr {
 
 // モータードライバを使う MD10C R3(CYTRON TECHNOLOGY)対応
-class MotorDriver {
+class MotorDriver : public Output<int16_t> {
 public:
     // PWMピン
     AnalogOut pwm;
@@ -39,6 +40,12 @@ public:
      * @param int16_t 出力するパワー。範囲は-255~255
      */
     void setPower(int16_t power);
+
+    /**
+     * パワーを出力する
+     * @param int16_t value 出力するパワー。範囲は-255~255
+     */
+    void write(int16_t value) override;
 };
 
 }
