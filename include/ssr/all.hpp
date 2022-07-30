@@ -8,6 +8,8 @@ namespace ssr {}
 
 // 基底型たち
 #include "ssr/Types.hpp"
+// 2次元ベクトル型
+#include "ssr/Vector2D.hpp"
 // デジタルinputのピン型
 #include "ssr/DigitalIn.hpp"
 // デジタルoutputのピン型
