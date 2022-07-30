@@ -7,6 +7,7 @@
 namespace ssr {
 
 template<typename Value> class Vector2D {
+public:
     Value x, y;
 
     Vector2D(Value x = 0, Value y = 0);

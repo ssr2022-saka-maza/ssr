@@ -6,8 +6,8 @@
 // このライブラリが使う名前空間
 namespace ssr {}
 
-// 基底型たち
-#include "ssr/Types.hpp"
+// ピン型
+#include "ssr/PinType.hpp"
 // 2次元ベクトル型
 #include "ssr/Vector2D.hpp"
 // デジタルinputのピン型
@@ -20,5 +20,7 @@ namespace ssr {}
 #include "ssr/AnalogOut.hpp"
 // モータードライバのハンドラ型
 #include "ssr/MotorDriver.hpp"
+// 足回りを操作する型
+#include "ssr/LowerBody.hpp"
 
 #endif /* SSR_ALL_HPP */

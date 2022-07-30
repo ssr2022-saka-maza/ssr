@@ -4,7 +4,7 @@
 #define SSR_ANALOG_OUT_HPP
 
 #include <Arduino.h>
-#include "ssr/Types.hpp"
+#include "ssr/PinType.hpp"
 #include "ssr/Output.hpp"
 
 // このライブラリが使う名前空間

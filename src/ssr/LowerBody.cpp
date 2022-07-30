@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "ssr/Types.hpp"
+#include "ssr/PinType.hpp"
 #include "ssr/LowerBody.hpp"
 
 ssr::LowerBody::LowerBody(

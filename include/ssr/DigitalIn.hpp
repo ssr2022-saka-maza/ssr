@@ -4,7 +4,7 @@
 #define SSR_DIGITAL_IN_HPP
 
 #include <Arduino.h>
-#include "ssr/Types.hpp"
+#include "ssr/PinType.hpp"
 #include "ssr/Input.hpp"
 
 // このライブラリが使う名前空間

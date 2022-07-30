@@ -1,9 +1,9 @@
 #pragma once
 
-#ifndef SSR_TYPES_HPP
-#define SSR_TYPES_HPP
+#ifndef SSR_PIN_TYPE_HPP
+#define SSR_PIN_TYPE_HPP
 
-#include <Arduino.h>
+#include <stdint.h>
 
 // このライブラリが使う名前空間
 namespace ssr {
@@ -11,4 +11,4 @@ namespace ssr {
     using PinType = uint8_t;
 }
 
-#endif /* SSR_TYPES_HPP */
+#endif /* SSR_PIN_TYPE_HPP */
