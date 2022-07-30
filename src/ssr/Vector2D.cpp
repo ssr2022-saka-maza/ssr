@@ -51,10 +51,10 @@ ssr::Vector2D<Value> & operator -= (ssr::Vector2D<Value> & lh, const ssr::Vector
 
 template<typename Value>
 ssr::Vector2D<Value> operator + (const ssr::Vector2D<Value> & lh, const ssr::Vector2D<Value> & rh) {
-    return Vector2D<Value>{lh.x + rh.x, lh.y + rh.y};
+    return ssr::Vector2D<Value>{lh.x + rh.x, lh.y + rh.y};
 }
 
 template<typename Value>
 ssr::Vector2D<Value> operator - (const ssr::Vector2D<Value> & lh, const ssr::Vector2D<Value> & rh) {
-    return Vector2D<Value>{lh.x - rh.x, lh.y - rh.y};
+    return ssr::Vector2D<Value>{lh.x - rh.x, lh.y - rh.y};
 }
