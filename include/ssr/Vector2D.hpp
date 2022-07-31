@@ -3,6 +3,8 @@
 #ifndef SSR_VECTOR_2D_HPP
 #define SSR_VECTOR_2D_HPP
 
+#include <math.h>
+
 // このライブラリが使う名前空間
 namespace ssr {
 
