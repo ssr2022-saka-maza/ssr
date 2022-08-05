@@ -6,7 +6,6 @@
 #include <Arduino.h>
 
 #include <PS4Parser.h>
-//USB Usb;
 
 #include <PS4USB.h>
 #include <PS4BT.h>
@@ -20,15 +19,6 @@
 #include <spi4teensy3.h>
 #endif /* dobogusinclude */
 
-//BTD Btd(&Usb);
-
-// 接続したことがない場合
-// コントローラー側はPSとShareボタンを長押しする
-//PS4BT PS4(&Btd, PAIR);
-
-// 接続したことがある場合
-//PS4BT PS4(&Btd);
-
 #include "ssr/Input.hpp"
 #include "ssr/PS4Value.hpp"
 #include "ssr/PS4Connection.hpp"
@@ -36,6 +26,10 @@
 // このライブラリが使う名前空間
 namespace ssr {
 
+/**
+ * PS4コントローラーとの接続を管理する
+ * @tparam connection ssr::PS4Connection 接続方式の種類 ::usbまたは::bluetooth
+ */
 template<PS4Connection connection> class PS4 : Input<PS4Value *> {};
 
 template<> class PS4<PS4Connection::usb> : Input<PS4Value *> {
@@ -44,24 +38,45 @@ private:
     PS4USB _ps4;
 
 public:
+    // コンストラクタ
     PS4() : _usb(), _ps4(&_usb) {}
+
+    // デストラクタ
     ~PS4() = default;
 
     PS4(const PS4 &) = delete;
     PS4 & operator = (const PS4 &) = delete;
 
+    /**
+     * コントローラー(USB)を初期化する
+     * @return int 初期化に成功したら0 失敗したら-1
+     * @warning 必ずsetup()で呼び出して返り値を確認すること
+     */
     int begin() {
         return _usb.Init();
     }
 
+    /**
+     * 最新の情報に更新する
+     * @warning 毎loop()ごとに呼び出すこと
+     */
     void update() {
         _usb.Task();
     }
 
+    /**
+     * コントローラーに接続できているか確認する
+     * @return bool 接続できていたらtrue
+     */
     bool connected() {
         return _ps4.connected();
     }
 
+    /**
+     * コントローラーのセンサー値を取得する
+     * @param[out] output ssr::PS4Value * 取得した値を出力する先
+     * @note 引数がnullptrあるいはNULLならば何もしない
+     */
     void read(ssr::PS4Value * output) {
         if (output == nullptr || output == NULL) return;
         output->lstick.x = _ps4.getAnalogHat(LeftHatX);
@@ -105,6 +120,10 @@ public:
         output->roll = _ps4.getAngle(Roll);
     }
 
+    /**
+     * コントローラーのセンサー値を取得する
+     * @return PS4Value * センサー値をまとめた構造体へのポインタ 必ずdeleteすること
+     */
     PS4Value * read() override {
         ssr::PS4Value * value = new ssr::PS4Value(
             _ps4.getAnalogHat(LeftHatX),  _ps4.getAnalogHat(LeftHatY),
@@ -142,8 +161,8 @@ public:
             value->finger2Pos.y = _ps4.getY(1);
         }
         return value;
-    }
-};
+    } // PS4Value * read()
+}; // template<> class PS4<PS4Connection::usb> : Input<PS4Value *>
 
 template<> class PS4<PS4Connection::bluetooth> : Input<PS4Value *> {
 private:
@@ -152,24 +171,48 @@ private:
     PS4BT _ps4;
 
 public:
+    /**
+     * 初期化子
+     * @param pair bool 最初の接続時にtrueを指定する デフォルトはfalse
+     */
     PS4(bool pair = false) : _usb(), _btd(&_usb), _ps4(&_btd, pair) {}
+
+    // デストラクタ
     ~PS4() = default;
 
     PS4(const PS4 &) = delete;
     PS4 & operator = (const PS4 &) = delete;
 
+    /**
+     * コントローラー(USB)を初期化する
+     * @return int 初期化に成功したら0 失敗したら-1
+     * @warning 必ずsetup()で呼び出して返り値を確認すること
+     */
     int begin() {
         return _usb.Init();
     }
 
+    /**
+     * 最新の情報に更新する
+     * @warning 毎loop()ごとに呼び出すこと
+     */
     void update() {
         _usb.Task();
     }
 
+    /**
+     * コントローラーに接続できているか確認する
+     * @return bool 接続できていたらtrue
+     */
     bool connected() {
         return _ps4.connected();
     }
 
+    /**
+     * コントローラーのセンサー値を取得する
+     * @param[out] output ssr::PS4Value * 取得した値を出力する先
+     * @details 引数がnullptrあるいはNULLならば何もしない
+     */
     void read(ssr::PS4Value * output) {
         if (output == nullptr || output == NULL) return;
         output->lstick.x = _ps4.getAnalogHat(LeftHatX);
@@ -211,8 +254,12 @@ public:
         }
         output->pitch = _ps4.getAngle(Pitch);
         output->roll = _ps4.getAngle(Roll);
-    }
+    } // void read(ssr::PS4Value * output)
 
+    /**
+     * コントローラーのセンサー値を取得する
+     * @return PS4Value * センサー値をまとめた構造体へのポインタ 必ずdeleteすること
+     */
     PS4Value * read() override {
         ssr::PS4Value * value = new ssr::PS4Value(
             _ps4.getAnalogHat(LeftHatX),  _ps4.getAnalogHat(LeftHatY),
@@ -250,8 +297,18 @@ public:
             value->finger2Pos.y = _ps4.getY(1);
         }
         return value;
-    }
-};
+    } // PS4Value * read()
+}; // class PS4<PS4Connection::bluetooth> : Input<PS4Value *
+
+/**
+ * PS4コントローラーとのUSB接続を管理する
+ */
+using PS4_USB = PS4<PS4Connection::usb>;
+
+/**
+ * PS4コントローラーとのBluetooth接続を管理する
+ */
+using PS4_Bluetooth = PS4<PS4Connection::bluetooth>;
 
 } // namespace ssr
 

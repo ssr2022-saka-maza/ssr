@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <ssr/PS4.hpp>
 
-ssr::PS4<ssr::PS4Connection::bluetooth> ps4(true); // Bluetooth接続の場合 初期ペアリングの時trueを渡す
-//ssr::PS4<ssr::PS4Connection::usb> ps4; // USB接続の場合 Bluetoothの行(上の1行)をコメントアウトすること
+ssr::PS4_Bluetooth ps4(true); // Bluetooth接続の場合 初期ペアリングの時trueを渡す
+//ssr::PS4_USB ps4; // USB接続の場合 Bluetoothの行(上の1行)をコメントアウトすること
 
 void setup() {
     Serial.begin(115200);
