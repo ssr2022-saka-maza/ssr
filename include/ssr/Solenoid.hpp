@@ -9,8 +9,10 @@
 // このライブラリが使う名前空間
 namespace ssr {
 
+// ソレノイドを扱う
 class Solenoid {
 private:
+    // ソレノイドを繋げたピン
     DigitalOut _pin;
 
 public:
@@ -34,7 +36,7 @@ public:
      * ソレノイドを発火させる
      */
     void fire();
-};
+}; // class Solenoid
 
 } // namespace ssr
 
