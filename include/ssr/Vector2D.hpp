@@ -18,10 +18,9 @@
 #include <math.h>
 
 /**
- * @brief このライブラリが使う名前空間
+ * @brief ssrライブラリが使う名前空間
  */
 namespace ssr {
-
     /**
      * @brief 2次元ベクトルを表現する型
      * @tparam T 成分の型
@@ -84,7 +83,6 @@ namespace ssr {
             return sqrt(magSq());
         }
     }; // class Vector2D
-
 } // namespace ssr
 
 /**
