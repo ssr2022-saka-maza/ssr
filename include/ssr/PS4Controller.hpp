@@ -1,44 +1,68 @@
+/**
+ * @file PS4Controller.hpp
+ * @author H1rono (hronok66@gmail.com)
+ * @brief 操作を登録できるPS4Controller
+ * @version 0.1
+ * @copyright Copyright (c) 2022 ssr2022-saka-maza
+ */
+
 #pragma once
 
 #ifndef SSR_PS4_CONTROLLER_HPP
+
+/**
+ * @brief ssr/PS4Controller.hppがインクルードされていることを示すdefine
+ */
 #define SSR_PS4_CONTROLLER_HPP
 
 #include "ssr/PS4.hpp"
 #include "ssr/PS4Operation.hpp"
 
-// このライブラリが使う名前空間
+/**
+ * @brief ssrライブラリが使う名前空間
+ */
 namespace ssr {
 
 /**
- * 操作を登録できるPS4コントローラー
+ * @brief 操作を登録できるPS4コントローラー
  * @tparam connection ssr::PS4Connection 接続方式の種類 ::usbまたは::bluetooth
  */
 template<ssr::PS4Connection connection> class PS4Controller;
 
 /**
- * 操作を登録できるPS4コントローラー
- * @tparam connection ssr::PS4Connection 接続方式の種類 ::usbまたは::bluetooth
+ * @brief 操作を登録できるPS4コントローラーの有線接続版
+ * @tparam ssr::PS4Connection::usb USBケーブルでの有線接続
+ * @note PS4Operation型のポインタを渡すことで新たな操作を登録する
  */
-template<>
-class PS4Controller<PS4Connection::usb> {
+template<> class PS4Controller<PS4Connection::usb> {
 public:
-    // 操作を表現するオブジェクトの型
+    /**
+     * @brief 操作を表現するオブジェクトの型
+     */
     using Operation = PS4Operation;
 
 private:
-    // 現在登録されている操作の数
+    /**
+     * @brief 現在登録されている操作の数
+     */
     uint8_t _operationCount;
-    // 現在登録されている操作の配列
+    /**
+     * @brief 現在登録されている操作の配列
+     */
     Operation ** _operations;
-    // 使用するコントローラー
+    /**
+     * @brief 使用するコントローラー
+     */
     ssr::PS4<PS4Connection::usb> _ps4;
 
 public:
-    // 登録できる操作の最大数 最初に設定したら変更不可能
+    /**
+     * @brief 登録できる操作の最大数 最初に設定したら変更不可能
+     */
     const uint8_t operationCapacity;
 
     /**
-     * 初期化子
+     * @brief 初期化子
      * @param operationCapacity uint8_t 登録できる操作の最大数 最初に設定したら変更不可能
      */
     PS4Controller(uint8_t operationCapacity = 16)
@@ -50,32 +74,33 @@ public:
         }
     }
 
-    // デストラクタ
+    /**
+     * @brief Destroy the PS4Controller object
+     */
     ~PS4Controller() {
         if (_operations == NULL || _operations == nullptr) return;
         delete[] _operations;
     }
 
     /**
-     * コントローラーを初期化する
+     * @brief コントローラーを初期化する 必ずsetup()で呼び出して返り値を確認すること
      * @return int 初期化に成功したら0 失敗したら-1
-     * @warning 必ずsetup()で呼び出して返り値を確認すること
      */
     int begin() {
         return _ps4.begin();
     }
 
     /**
-     * コントローラーに接続できているか確認する
-     * @return bool 接続できていたらtrue
+     * @brief コントローラーに接続できているか確認する
+     * @return true 接続できている
+     * @return false 接続できていない
      */
     bool connected() {
         return _ps4.connected();
     }
 
     /**
-     * 最新の情報に更新して、登録された操作を実行する
-     * @warning 毎loop()ごとに呼び出すこと
+     * @brief 最新の情報に更新して、登録された操作を実行する 毎loop()ごとに呼び出すこと
      */
     void update() {
         _ps4.update();
@@ -88,7 +113,7 @@ public:
     }
 
     /**
-     * 操作を追加する
+     * @brief 操作を追加する
      * @param operation Operation * 操作を表現するオブジェクトのポインタ あくまでポインタを登録するだけなので注意
      */
     void addOperation(Operation * operation) {
@@ -97,9 +122,10 @@ public:
     }
 
     /**
-     * 操作を削除する
-     * @param operation Operation * 削除する操作
-     * @return bool 削除されたらtrue
+     * @brief 操作を削除する
+     * @param operation Operation * 削除する操作 deleteはしない
+     * @return true 削除できた
+     * @return false 削除できなかった
      */
     bool removeOperation(Operation * operation) {
         uint8_t removeIndex = _operationCount;
@@ -120,26 +146,40 @@ public:
     }
 }; // class PS4Controller<PS4Connection::usb>
 
-template<>
-class PS4Controller<PS4Connection::bluetooth> {
+/**
+ * @brief 操作を登録できるPS4コントローラーの無線接続版
+ * @tparam ssr::PS4Connection::bluetooth Bluetooth通信での無線接続
+ * @note PS4Operation型のポインタを渡すことで新たな操作を登録する
+ */
+template<> class PS4Controller<PS4Connection::bluetooth> {
 public:
-    // 操作を表現するオブジェクトの型
+    /**
+     * @brief 操作を表現するオブジェクトの型
+     */
     using Operation = PS4Operation;
 
 private:
-    // 現在登録されている操作の数
+    /**
+     * @brief 現在登録されている操作の数
+     */
     uint8_t _operationCount;
-    // 現在登録されている操作の配列
+    /**
+     * @brief 現在登録されている操作の配列
+     */
     Operation ** _operations;
-    // 使用するコントローラー
+    /**
+     * @brief 使用するコントローラー
+     */
     ssr::PS4<PS4Connection::bluetooth> _ps4;
 
 public:
-    // 登録できる操作の最大数 最初に設定したら変更不可能
+    /**
+     * @brief 登録できる操作の最大数 最初に設定したら変更不可能
+     */
     const uint8_t operationCapacity;
 
     /**
-     * 初期化子
+     * @brief 初期化子
      * @param pair bool 最初の接続時にtrueを指定する デフォルトはfalse
      * @param operationCapacity uint8_t 登録できる操作の最大数 最初に設定したら変更不可能
      */
@@ -152,14 +192,16 @@ public:
         }
     }
 
-    // デストラクタ
+    /**
+     * @brief Destroy the PS4Controller object
+     */
     ~PS4Controller() {
         if (_operations == NULL || _operations == nullptr) return;
         delete[] _operations;
     }
 
     /**
-     * コントローラーを初期化する
+     * @brief コントローラーを初期化する
      * @return int 初期化に成功したら0 失敗したら-1
      * @warning 必ずsetup()で呼び出して返り値を確認すること
      */
@@ -168,7 +210,7 @@ public:
     }
 
     /**
-     * コントローラーに接続できているか確認する
+     * @brief コントローラーに接続できているか確認する
      * @return bool 接続できていたらtrue
      */
     bool connected() {
@@ -176,7 +218,7 @@ public:
     }
 
     /**
-     * 最新の情報に更新して、登録された操作を実行する
+     * @brief 最新の情報に更新して、登録された操作を実行する
      * @warning 毎loop()ごとに呼び出すこと
      */
     void update() {
@@ -190,7 +232,7 @@ public:
     }
 
     /**
-     * 操作を追加する
+     * @brief 操作を追加する
      * @param operation Operation * 操作を表現するオブジェクトのポインタ あくまでポインタを登録するだけなので注意
      */
     void addOperation(Operation * operation) {
@@ -199,9 +241,10 @@ public:
     }
 
     /**
-     * 操作を削除する
+     * @brief 操作を削除する
      * @param operation Operation * 削除する操作
-     * @return bool 削除されたらtrue
+     * @return true 削除された
+     * @return false 削除できなかった
      */
     bool removeOperation(Operation * operation) {
         uint8_t removeIndex = _operationCount;
@@ -223,7 +266,7 @@ public:
 }; // class PS4Controller<PS4Connection::bluetooth>
 
 /**
- * USB接続で操作を登録できるPS4コントローラー
+ * @brief USB接続で操作を登録できるPS4コントローラー
  */
 using PS4Controller_USB = PS4Controller<PS4Connection::usb>;
 /**
