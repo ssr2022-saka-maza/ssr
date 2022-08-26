@@ -2,10 +2,10 @@
     "name": "ssr",
     "keywords": "",
     "description": "Framework for SSR contest in rogy",
-    "homepage": "https://github.com/",
+    "homepage": "https://github.com/ssr2022-saka-maza",
     "repository": {
         "type": "git",
-        "url": "https://github.com/"
+        "url": "https://github.com/2022-saka-maza/ssr.git"
     },
     "version": "0.1.0",
     "frameworks": "arduino",
