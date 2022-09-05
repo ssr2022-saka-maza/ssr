@@ -118,23 +118,23 @@ namespace ssr {
             output->lstick.y = _ps4.getAnalogHat(LeftHatY);
             output->rstick.x = _ps4.getAnalogHat(RightHatX);
             output->rstick.y = _ps4.getAnalogHat(RightHatY);
-            output->up = _ps4.getButtonClick(UP);
-            output->right = _ps4.getButtonClick(RIGHT);
-            output->down = _ps4.getButtonClick(DOWN);
-            output->left = _ps4.getButtonClick(LEFT);
-            output->triangle = _ps4.getButtonClick(TRIANGLE);
-            output->circle = _ps4.getButtonClick(CIRCLE);
-            output->cross = _ps4.getButtonClick(CROSS);
-            output->square = _ps4.getButtonClick(SQUARE);
-            output->l1 = _ps4.getButtonClick(L1);
+            output->up = _ps4.getButtonPress(UP);
+            output->right = _ps4.getButtonPress(RIGHT);
+            output->down = _ps4.getButtonPress(DOWN);
+            output->left = _ps4.getButtonPress(LEFT);
+            output->triangle = _ps4.getButtonPress(TRIANGLE);
+            output->circle = _ps4.getButtonPress(CIRCLE);
+            output->cross = _ps4.getButtonPress(CROSS);
+            output->square = _ps4.getButtonPress(SQUARE);
+            output->l1 = _ps4.getButtonPress(L1);
             output->l2 = _ps4.getAnalogButton(L2);
-            output->l3 = _ps4.getButtonClick(L3);
-            output->r1 = _ps4.getButtonClick(R1);
+            output->l3 = _ps4.getButtonPress(L3);
+            output->r1 = _ps4.getButtonPress(R1);
             output->r2 = _ps4.getAnalogButton(R2);
-            output->r3 = _ps4.getButtonClick(R3);
-            output->ps = _ps4.getButtonClick(PS);
-            output->share = _ps4.getButtonClick(SHARE);
-            output->options = _ps4.getButtonClick(OPTIONS);
+            output->r3 = _ps4.getButtonPress(R3);
+            output->ps = _ps4.getButtonPress(PS);
+            output->share = _ps4.getButtonPress(SHARE);
+            output->options = _ps4.getButtonPress(OPTIONS);
             output->finger1Touch = _ps4.isTouching(0);
             if (output->finger1Touch) {
                 output->finger1Pos.x = _ps4.getX(0);
@@ -163,23 +163,23 @@ namespace ssr {
             ssr::PS4Value * value = new ssr::PS4Value(
                 _ps4.getAnalogHat(LeftHatX),  _ps4.getAnalogHat(LeftHatY),
                 _ps4.getAnalogHat(RightHatX), _ps4.getAnalogHat(RightHatY),
-                _ps4.getButtonClick(UP),
-                _ps4.getButtonClick(RIGHT),
-                _ps4.getButtonClick(DOWN),
-                _ps4.getButtonClick(LEFT),
-                _ps4.getButtonClick(TRIANGLE),
-                _ps4.getButtonClick(CIRCLE),
-                _ps4.getButtonClick(CROSS),
-                _ps4.getButtonClick(SQUARE),
-                _ps4.getButtonClick(L1),
+                _ps4.getButtonPress(UP),
+                _ps4.getButtonPress(RIGHT),
+                _ps4.getButtonPress(DOWN),
+                _ps4.getButtonPress(LEFT),
+                _ps4.getButtonPress(TRIANGLE),
+                _ps4.getButtonPress(CIRCLE),
+                _ps4.getButtonPress(CROSS),
+                _ps4.getButtonPress(SQUARE),
+                _ps4.getButtonPress(L1),
                 _ps4.getAnalogButton(L2),
-                _ps4.getButtonClick(L3),
-                _ps4.getButtonClick(R1),
+                _ps4.getButtonPress(L3),
+                _ps4.getButtonPress(R1),
                 _ps4.getAnalogButton(R2),
-                _ps4.getButtonClick(R3),
-                _ps4.getButtonClick(PS),
-                _ps4.getButtonClick(SHARE),
-                _ps4.getButtonClick(OPTIONS),
+                _ps4.getButtonPress(R3),
+                _ps4.getButtonPress(PS),
+                _ps4.getButtonPress(SHARE),
+                _ps4.getButtonPress(OPTIONS),
                 _ps4.isTouching(0),
                 0, 0,
                 _ps4.isTouching(1),
@@ -267,23 +267,23 @@ namespace ssr {
             output->lstick.y = _ps4.getAnalogHat(LeftHatY);
             output->rstick.x = _ps4.getAnalogHat(RightHatX);
             output->rstick.y = _ps4.getAnalogHat(RightHatY);
-            output->up = _ps4.getButtonClick(UP);
-            output->right = _ps4.getButtonClick(RIGHT);
-            output->down = _ps4.getButtonClick(DOWN);
-            output->left = _ps4.getButtonClick(LEFT);
-            output->triangle = _ps4.getButtonClick(TRIANGLE);
-            output->circle = _ps4.getButtonClick(CIRCLE);
-            output->cross = _ps4.getButtonClick(CROSS);
-            output->square = _ps4.getButtonClick(SQUARE);
-            output->l1 = _ps4.getButtonClick(L1);
+            output->up = _ps4.getButtonPress(UP);
+            output->right = _ps4.getButtonPress(RIGHT);
+            output->down = _ps4.getButtonPress(DOWN);
+            output->left = _ps4.getButtonPress(LEFT);
+            output->triangle = _ps4.getButtonPress(TRIANGLE);
+            output->circle = _ps4.getButtonPress(CIRCLE);
+            output->cross = _ps4.getButtonPress(CROSS);
+            output->square = _ps4.getButtonPress(SQUARE);
+            output->l1 = _ps4.getButtonPress(L1);
             output->l2 = _ps4.getAnalogButton(L2);
-            output->l3 = _ps4.getButtonClick(L3);
-            output->r1 = _ps4.getButtonClick(R1);
+            output->l3 = _ps4.getButtonPress(L3);
+            output->r1 = _ps4.getButtonPress(R1);
             output->r2 = _ps4.getAnalogButton(R2);
-            output->r3 = _ps4.getButtonClick(R3);
-            output->ps = _ps4.getButtonClick(PS);
-            output->share = _ps4.getButtonClick(SHARE);
-            output->options = _ps4.getButtonClick(OPTIONS);
+            output->r3 = _ps4.getButtonPress(R3);
+            output->ps = _ps4.getButtonPress(PS);
+            output->share = _ps4.getButtonPress(SHARE);
+            output->options = _ps4.getButtonPress(OPTIONS);
             output->finger1Touch = _ps4.isTouching(0);
             if (output->finger1Touch) {
                 output->finger1Pos.x = _ps4.getX(0);
@@ -312,23 +312,23 @@ namespace ssr {
             ssr::PS4Value * value = new ssr::PS4Value(
                 _ps4.getAnalogHat(LeftHatX),  _ps4.getAnalogHat(LeftHatY),
                 _ps4.getAnalogHat(RightHatX), _ps4.getAnalogHat(RightHatY),
-                _ps4.getButtonClick(UP),
-                _ps4.getButtonClick(RIGHT),
-                _ps4.getButtonClick(DOWN),
-                _ps4.getButtonClick(LEFT),
-                _ps4.getButtonClick(TRIANGLE),
-                _ps4.getButtonClick(CIRCLE),
-                _ps4.getButtonClick(CROSS),
-                _ps4.getButtonClick(SQUARE),
-                _ps4.getButtonClick(L1),
+                _ps4.getButtonPress(UP),
+                _ps4.getButtonPress(RIGHT),
+                _ps4.getButtonPress(DOWN),
+                _ps4.getButtonPress(LEFT),
+                _ps4.getButtonPress(TRIANGLE),
+                _ps4.getButtonPress(CIRCLE),
+                _ps4.getButtonPress(CROSS),
+                _ps4.getButtonPress(SQUARE),
+                _ps4.getButtonPress(L1),
                 _ps4.getAnalogButton(L2),
-                _ps4.getButtonClick(L3),
-                _ps4.getButtonClick(R1),
+                _ps4.getButtonPress(L3),
+                _ps4.getButtonPress(R1),
                 _ps4.getAnalogButton(R2),
-                _ps4.getButtonClick(R3),
-                _ps4.getButtonClick(PS),
-                _ps4.getButtonClick(SHARE),
-                _ps4.getButtonClick(OPTIONS),
+                _ps4.getButtonPress(R3),
+                _ps4.getButtonPress(PS),
+                _ps4.getButtonPress(SHARE),
+                _ps4.getButtonPress(OPTIONS),
                 _ps4.isTouching(0),
                 0, 0,
                 _ps4.isTouching(1),
