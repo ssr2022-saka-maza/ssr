@@ -13,7 +13,7 @@
     "dependencies": {
         "SPI": "^1.0",
         "felis/USB-Host-Shield-20": "^1.6.0",
-        "Servo": "^1.1.8"
+        "arduino-libraries/Servo": "^1.1.8"
     }
 }
 
