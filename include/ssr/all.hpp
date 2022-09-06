@@ -16,7 +16,7 @@
 #define SSR_ALL_HPP
 
 /**
- * @brief このライブラリが使う名前空間
+ * @brief ssrライブラリが使う名前空間
  */
 namespace ssr {}
 
@@ -29,6 +29,7 @@ namespace ssr {}
 #include "ssr/AnalogIn.hpp"
 #include "ssr/AnalogOut.hpp"
 #include "ssr/Solenoid.hpp"
+#include "ssr/SyncServo.hpp"
 #include "ssr/MotorDriver.hpp"
 #include "ssr/LowerBody.hpp"
 #include "ssr/PS4Value.hpp"
