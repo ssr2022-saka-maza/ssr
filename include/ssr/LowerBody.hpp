@@ -49,7 +49,7 @@ namespace ssr {
          * @param dir3 ssr::PinType モーター3につなげるDIRピンの番号
          * @param pwm3 ssr::PinType モーター3につなげるPWMピンの番号
          */
-        LowerBody(
+        explicit LowerBody(
             PinType dir1, PinType pwm1,
             PinType dir2, PinType pwm2,
             PinType dir3, PinType pwm3
@@ -61,7 +61,7 @@ namespace ssr {
          * @param motor1 ssr::MotorDriver モーター2
          * @param motor1 ssr::MotorDriver モーター3
          */
-        LowerBody(MotorDriver motor1, MotorDriver motor2, MotorDriver motor3);
+        explicit LowerBody(MotorDriver motor1, MotorDriver motor2, MotorDriver motor3);
 
         /**
          * @note

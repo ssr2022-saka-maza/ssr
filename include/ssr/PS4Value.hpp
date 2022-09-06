@@ -184,7 +184,7 @@ namespace ssr {
          * @param pitch        float    コントローラーのpitch傾き
          * @param roll         float    コントローラーのroll傾き
          */
-        PS4Value(
+        explicit PS4Value(
             uint8_t lstick_x = 0, uint8_t lstick_y = 0, uint8_t rstick_x = 0, uint8_t rstick_y = 0,
             bool up       = false, bool right  = false, bool down  = false, bool left   = false,
             bool triangle = false, bool circle = false, bool cross = false, bool square = false,

@@ -43,7 +43,7 @@ namespace ssr {
          * @param dirPin ssr::PinType DIRにつなげるピンの番号
          * @param pwmPin ssr::PinType PWMにつなげるピンの番号
          */
-        MotorDriver(PinType dirPin, PinType pwmPin);
+        explicit MotorDriver(PinType dirPin, PinType pwmPin);
 
         /**
          * @brief 初期設定。全体のsetup()内でこれを呼び出すこと

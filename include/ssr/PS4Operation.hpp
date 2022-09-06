@@ -41,7 +41,7 @@ namespace ssr {
         /**
          * @brief Construct a new PS4Operation object
          */
-        PS4Operation();
+        explicit PS4Operation();
 
         // コピーコンストラクタを禁止
         PS4Operation(const PS4Operation &) = delete;

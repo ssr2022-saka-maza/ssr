@@ -47,7 +47,7 @@ namespace ssr {
          * @param x x成分
          * @param y y成分
          */
-        Vector2D(T x = 0, T y = 0)
+        explicit Vector2D(T x = 0, T y = 0)
             : x(x), y(y) {}
 
         /**

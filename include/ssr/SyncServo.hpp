@@ -52,14 +52,14 @@ namespace ssr {
          * @brief Construct a new Sync Servo object
          * @param mirror bool サーボの角度を反転させるかどうか(trueで反転)
          */
-        SyncServo(bool mirror = false);
+        explicit SyncServo(bool mirror = false);
         /**
          * @brief Construct a new Sync Servo object
          * @param pin1 ssr::PinType サーボ1のピン
          * @param pin2 ssr::PinType サーボ2のピン
          * @param mirror bool サーボの角度を反転させるかどうか(trueで反転)
          */
-        SyncServo(PinType pin1, PinType pin2, bool mirror = false);
+        explicit SyncServo(PinType pin1, PinType pin2, bool mirror = false);
 
         /**
          * @brief サーボにピンを割り当てる

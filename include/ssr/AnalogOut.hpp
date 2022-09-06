@@ -43,7 +43,7 @@ namespace ssr {
          * @brief 初期化子
          * @param pin ssr::PinType 接続ピン
          */
-        AnalogOut(PinType pin);
+        explicit AnalogOut(PinType pin);
 
         /**
          * @brief ピンの初期設定。全体のsetup()内でこれを呼び出すこと

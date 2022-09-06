@@ -74,7 +74,7 @@ namespace ssr {
         /**
          * @brief Construct a new PS4 object
          */
-        PS4() : _usb(), _ps4(&_usb) {}
+        explicit PS4() : _usb(), _ps4(&_usb) {}
 
         /**
          * @brief Destroy the PS4 object
@@ -223,7 +223,7 @@ namespace ssr {
          * @brief 初期化子
          * @param pair bool 最初の接続時にtrueを指定する デフォルトはfalse
          */
-        PS4(bool pair = false) : _usb(), _btd(&_usb), _ps4(&_btd, pair) {}
+        explicit PS4(bool pair = false) : _usb(), _btd(&_usb), _ps4(&_btd, pair) {}
 
         /**
          * @brief Destroy the PS4 object

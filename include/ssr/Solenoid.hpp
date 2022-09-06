@@ -37,7 +37,7 @@ namespace ssr {
          * @brief 初期化子
          * @param pin ssr::PinType ソレノイドを繋げたピン
          */
-        Solenoid(PinType pin);
+        explicit Solenoid(PinType pin);
 
         /**
          * @brief 初期化 全体のsetup()で呼ぶこと

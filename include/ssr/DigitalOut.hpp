@@ -43,7 +43,7 @@ namespace ssr {
          * @param pin ssr::PinType 接続ピン
          * @param value bool 初期値 デフォルトはfalse(LOW)
          */
-        DigitalOut(PinType pin);
+        explicit DigitalOut(PinType pin);
 
         /**
          * @brief ピンの初期設定。全体のsetup()でこれを呼び出すこと

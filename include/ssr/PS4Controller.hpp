@@ -64,7 +64,7 @@ namespace ssr {
          * @brief 初期化子
          * @param operationCapacity uint8_t 登録できる操作の最大数 最初に設定したら変更不可能
          */
-        PS4Controller(uint8_t operationCapacity = 16)
+        explicit PS4Controller(uint8_t operationCapacity = 16)
         : _operationCount(0), _operations(nullptr), _ps4(), operationCapacity(operationCapacity)
         {
             _operations = new Operation*[this->operationCapacity];
@@ -182,7 +182,7 @@ namespace ssr {
          * @param pair bool 最初の接続時にtrueを指定する デフォルトはfalse
          * @param operationCapacity uint8_t 登録できる操作の最大数 最初に設定したら変更不可能
          */
-        PS4Controller(bool pair = false, uint8_t operationCapacity = 16)
+        explicit PS4Controller(bool pair = false, uint8_t operationCapacity = 16)
         : _operationCount(0), _operations(nullptr), _ps4(pair), operationCapacity(operationCapacity)
         {
             _operations = new Operation*[this->operationCapacity];
