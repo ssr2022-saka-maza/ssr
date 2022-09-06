@@ -8,5 +8,12 @@ void ssr::DigitalIn::begin() {
 }
 
 bool ssr::DigitalIn::read() {
+    #ifdef SSR_VERBOSE
+    bool v = digitalRead(pin);
+    char buffer[256] = "";
+    snprintf_P(buffer, 200, PSTR("[ssr::DigitalIn] read value %d\n"), v);
+    Serial.print(buffer);
+    #else  /* SSR_VERBOSE */
     return (bool)digitalRead(pin);
+    #endif /* SSR_VERBOSE */
 }

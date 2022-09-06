@@ -15,6 +15,7 @@
  */
 #define SSR_SYNC_SERVO_HPP
 
+#include <Arduino.h>
 #include <Servo.h>
 #include "ssr/PinType.hpp"
 #include "ssr/Input.hpp"

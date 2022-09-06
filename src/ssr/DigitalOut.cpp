@@ -16,6 +16,11 @@ bool ssr::DigitalOut::getValue() {
 void ssr::DigitalOut::setValue(bool value) {
     _value = value;
     digitalWrite(pin, _value);
+    #ifdef SSR_VERBOSE
+    char buffer[256] = "";
+    snprintf_P(buffer, 200, PSTR("[ssr::DigitalOut] set value as %d\n"), _value);
+    Serial.print(buffer);
+    #endif /* SSR_VERBOSE */
 }
 
 void ssr::DigitalOut::write(bool value) {

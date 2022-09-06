@@ -26,6 +26,17 @@ void ssr::LowerBody::twist(float v_x, float v_y, float v_theta) {
     motor1.setPower((int16_t)v1);
     motor2.setPower((int16_t)v2);
     motor3.setPower((int16_t)v3);
+    #ifdef SSR_VERBOSE
+    char buffer[256] = "";
+    char * ptr = buffer;
+    ptr += snprintf_P(buffer, 200, PSTR("[ssr::LowerBody] set motor powers as "));
+    dtostrf(v1, 6, 2, ptr);       ptr += 6;
+    memcpy_P(ptr, PSTR(", "), 2); ptr += 2;
+    dtostrf(v2, 6, 2, ptr);       ptr += 6;
+    memcpy_P(ptr, PSTR(", "), 2); ptr += 2;
+    dtostrf(v3, 6, 2, ptr);       ptr += 6;
+    Serial.println(ptr);
+    #endif /* SSR_VERBOSE */
 }
 
 void ssr::LowerBody::parallel(float v_x, float v_y) {

@@ -13,8 +13,16 @@ uint16_t ssr::SyncServo::attach(ssr::PinType pin1, ssr::PinType pin2) {
 }
 
 void ssr::SyncServo::write(uint8_t value) {
+    #ifdef SSR_VERBOSE
+    uint8_t value2 = mirrored ? 180 - value : value;
+    _servo1.write(value);
+    _servo2.write(value2);
+    char buffer[256] = "";
+    snprintf_P(buffer, 200, PSTR("[ssr::SyncServo] wrote %d to servo1, %d to servo2"), value, value2);
+    #else
     _servo1.write(value);
     _servo2.write(mirrored ? 180 - value : value);
+    #endif /* SSR_VERBOSE */
 }
 
 int16_t ssr::SyncServo::read() {
