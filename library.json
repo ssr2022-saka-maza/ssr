@@ -2,18 +2,18 @@
     "name": "ssr",
     "keywords": "",
     "description": "Framework for SSR contest in rogy",
-    "homepage": "https://github.com/",
+    "homepage": "https://github.com/ssr2022-saka-maza",
     "repository": {
         "type": "git",
-        "url": "https://github.com/"
+        "url": "https://github.com/2022-saka-maza/ssr.git"
     },
-    "version": "0.0.0",
+    "version": "0.1.0",
     "frameworks": "arduino",
     "platforms": "atmelavr",
     "dependencies": {
         "SPI": "^1.0",
         "felis/USB-Host-Shield-20": "^1.6.0",
-        "Servo": "^1.1.8"
+        "arduino-libraries/Servo": "^1.1.8"
     }
 }
 

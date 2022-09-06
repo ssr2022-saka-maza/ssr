@@ -1,6 +1,18 @@
+/**
+ * @file MotorDriver.hpp
+ * @author H1rono (hronok66@gmail.com)
+ * @brief モータードライバ1つを扱う型MotorDriver
+ * @version 0.1
+ * @copyright Copyright (c) 2022 ssr2022-saka-maza
+ */
+
 #pragma once
 
 #ifndef SSR_MOTOR_DRIVER_HPP
+
+/**
+ * @brief ssr/MotorDriver.hppがインクルードされていることを示すdefine
+ */
 #define SSR_MOTOR_DRIVER_HPP
 
 #include <Arduino.h>
@@ -8,46 +20,55 @@
 #include "ssr/DigitalOut.hpp"
 #include "ssr/Output.hpp"
 
-// このライブラリが使う名前空間
+/**
+ * @brief ssrライブラリが使う名前空間
+ */
 namespace ssr {
+    /**
+     * @brief モータードライバを使う型 MD10C R3(CYTRON TECHNOLOGY)対応
+     */
+    class MotorDriver : public Output<int16_t> {
+    public:
+        /**
+         * @brief PWMに接続するピン
+         */
+        AnalogOut pwm;
+        /**
+         * @brief DIRに接続するピン
+         */
+        DigitalOut dir;
 
-// モータードライバを使う MD10C R3(CYTRON TECHNOLOGY)対応
-class MotorDriver : public Output<int16_t> {
-public:
-    // PWMピン
-    AnalogOut pwm;
-    // DIRピン
-    DigitalOut dir;
+        /**
+         * @brief 初期化子
+         * @param dirPin ssr::PinType DIRにつなげるピンの番号
+         * @param pwmPin ssr::PinType PWMにつなげるピンの番号
+         */
+        explicit MotorDriver(PinType dirPin, PinType pwmPin);
 
-    /**
-     * 初期化子
-     * @param PinType dirPin DIRにつなげるピンの番号
-     * @param PinType pwmPin PWMにつなげるピンの番号
-     */
-    MotorDriver(PinType dirPin, PinType pwmPin);
-    /**
-     * 初期設定。全体のsetup()内でこれを呼び出すこと
-     * @param int16_t power 初期パワー。デフォルトは0
-     */
-    void begin(int16_t power = 0);
-    /**
-     * 出力したパワーを得る
-     * @return int16_t 最後に出力したパワー
-     */
-    int16_t getPower();
-    /**
-     * パワーを出力する
-     * @param int16_t 出力するパワー。範囲は-255~255
-     */
-    void setPower(int16_t power);
+        /**
+         * @brief 初期設定。全体のsetup()内でこれを呼び出すこと
+         * @param power int16_t 初期パワー。デフォルトは0
+         */
+        void begin(int16_t power = 0);
 
-    /**
-     * パワーを出力する
-     * @param int16_t value 出力するパワー。範囲は-255~255
-     */
-    void write(int16_t value) override;
-};
+        /**
+         * @brief 出力したパワーを得る
+         * @return int16_t 最後に出力したパワー
+         */
+        int16_t getPower();
 
-}
+        /**
+         * @brief パワーを出力する
+         * @param power int16_t 出力するパワー。範囲は-255~255
+         */
+        void setPower(int16_t power);
+
+        /**
+         * @brief パワーを出力する
+         * @param value int16_t 出力するパワー。範囲は-255~255
+         */
+        void write(int16_t value) override;
+    }; // class MotorDriver
+} // namespace ssr
 
 #endif /* SSR_MOTOR_DRIVER_HPP */
