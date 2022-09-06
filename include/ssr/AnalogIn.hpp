@@ -1,7 +1,7 @@
 /**
  * @file AnalogIn.hpp
  * @author H1rono (hronok66@gmail.com)
- * @brief アナログ入力ピンを扱う型Output
+ * @brief アナログ入力ピンを扱う型AnalogIn
  * @version 0.1
  * @copyright Copyright (c) 2022 ssr2022-saka-maza
  */
