@@ -71,7 +71,7 @@ namespace ssr {
 
         /**
          * @brief 角度を設定する
-         * @param v uint8_t サーボ1に設定する角度 サーボ2の角度はmirroredの値次第で変わる
+         * @param value uint8_t サーボ1に設定する角度 サーボ2の角度はmirroredの値次第で変わる
          */
         virtual void write(uint8_t value) override;
 
