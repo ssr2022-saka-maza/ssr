@@ -13,6 +13,7 @@ bool ssr::DigitalIn::read() {
     char buffer[256] = "";
     snprintf_P(buffer, 200, PSTR("[ssr::DigitalIn] read value %d\n"), v);
     Serial.print(buffer);
+    return v;
     #else  /* SSR_VERBOSE */
     return (bool)digitalRead(pin);
     #endif /* SSR_VERBOSE */
