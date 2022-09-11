@@ -22,6 +22,8 @@ namespace ssr {}
 
 #include "ssr/PinType.hpp"
 #include "ssr/Vector2D.hpp"
+#include "ssr/type_traits.hpp"
+#include "ssr/MovingAverage.hpp"
 #include "ssr/Input.hpp"
 #include "ssr/Output.hpp"
 #include "ssr/DigitalIn.hpp"
