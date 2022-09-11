@@ -73,6 +73,10 @@ namespace ssr {
             delete[] _values;
         }
 
+        // コピー禁止
+        MovingAverage(const MovingAverage &) = delete;
+        MovingAverage & operator=(const MovingAverage &) = delete;
+
         /**
          * @brief 平均値を取得する
          * @return T 現在保持している値の平均 値を1つも保持していない場合は0
