@@ -67,8 +67,6 @@ namespace ssr {
         MovingAverage(MovingAverage&&) = default;
         // ムーブ代入を禁止
         MovingAverage & operator=(MovingAverage&&) = default;
-        // デストラクタを定義
-        ~MovingAverage() = default;
 
         /**
          * @brief Construct a new Moving Average object
@@ -85,10 +83,6 @@ namespace ssr {
         ~MovingAverage() {
             delete[] _values;
         }
-
-        // コピー禁止
-        MovingAverage(const MovingAverage &) = delete;
-        MovingAverage & operator=(const MovingAverage &) = delete;
 
         /**
          * @brief 平均値を取得する
