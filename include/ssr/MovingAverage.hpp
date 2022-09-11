@@ -57,6 +57,19 @@ namespace ssr {
          */
         const uint16_t _capacity;
 
+        // デフォルトコンストラクタを禁止
+        MovingAverage() = delete;
+        // コピーコンストラクタを禁止
+        MovingAverage(const MovingAverage &) = delete;
+        // コピー代入を禁止
+        MovingAverage & operator=(const MovingAverage &) = delete;
+        // ムーブコンストラクタを禁止
+        MovingAverage(MovingAverage&&) = default;
+        // ムーブ代入を禁止
+        MovingAverage & operator=(MovingAverage&&) = default;
+        // デストラクタを定義
+        ~MovingAverage() = default;
+
         /**
          * @brief Construct a new Moving Average object
          * @param capacity 保持する値の数

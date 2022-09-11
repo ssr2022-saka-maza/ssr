@@ -81,8 +81,14 @@ namespace ssr {
          */
         ~PS4() = default;
 
+        // コピーコンストラクタを禁止
         PS4(const PS4 &) = delete;
-        PS4 & operator = (const PS4 &) = delete;
+        // コピー代入を禁止
+        PS4 & operator=(const PS4 &) = delete;
+        // ムーブコンストラクタを禁止
+        PS4(PS4&&) = delete;
+        // ムーブ代入を禁止
+        PS4 & operator=(PS4&&) = delete;
 
         /**
          * @brief (USB)を初期化する 必ずsetup()で呼び出して返り値を確認すること
@@ -230,8 +236,14 @@ namespace ssr {
          */
         ~PS4() = default;
 
+        // コピーコンストラクタを禁止
         PS4(const PS4 &) = delete;
-        PS4 & operator = (const PS4 &) = delete;
+        // コピー代入を禁止
+        PS4 & operator=(const PS4 &) = delete;
+        // ムーブコンストラクタを禁止
+        PS4(PS4&&) = delete;
+        // ムーブ代入を禁止
+        PS4 & operator=(PS4&&) = delete;
 
         /**
          * @brief コントローラー(USB)を初期化する 必ずsetup()で呼び出して返り値を確認すること

@@ -50,6 +50,19 @@ namespace ssr {
         explicit Vector2D(T x = 0, T y = 0)
             : x(x), y(y) {}
 
+        // デフォルトコンストラクタを禁止
+        Vector2D() = delete;
+        // コピーコンストラクタを禁止
+        Vector2D(const Vector2D &) = default;
+        // コピー代入を禁止
+        Vector2D & operator=(const Vector2D &) = default;
+        // ムーブコンストラクタを禁止
+        Vector2D(Vector2D&&) = default;
+        // ムーブ代入を禁止
+        Vector2D & operator=(Vector2D&&) = default;
+        // デストラクタを定義
+        ~Vector2D() = default;
+
         /**
          * @brief ベクトルとの内積
          * @param v 内積をとるベクトル

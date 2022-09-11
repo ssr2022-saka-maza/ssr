@@ -47,6 +47,10 @@ namespace ssr {
         PS4Operation(const PS4Operation &) = delete;
         // コピー代入を禁止
         PS4Operation & operator=(const PS4Operation &) = delete;
+        // ムーブコンストラクタを禁止
+        PS4Operation(PS4Operation &&) = delete;
+        // ムーブ代入を禁止
+        PS4Operation & operator = (PS4Operation &&) = delete;
 
         /**
          * @brief センサー値から操作を行う

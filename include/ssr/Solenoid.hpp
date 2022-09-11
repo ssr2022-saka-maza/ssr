@@ -39,6 +39,19 @@ namespace ssr {
          */
         explicit Solenoid(PinType pin);
 
+        // デフォルトコンストラクタを禁止
+        Solenoid() = delete;
+        // コピーコンストラクタを禁止
+        Solenoid(const Solenoid &) = delete;
+        // コピー代入を禁止
+        Solenoid & operator=(const Solenoid &) = delete;
+        // ムーブコンストラクタを禁止
+        Solenoid(Solenoid&&) = delete;
+        // ムーブ代入を禁止
+        Solenoid & operator=(Solenoid&&) = delete;
+        // デストラクタを定義
+        ~Solenoid() = default;
+
         /**
          * @brief 初期化 全体のsetup()で呼ぶこと
          */

@@ -40,6 +40,19 @@ namespace ssr {
          */
         MotorDriver motor3;
 
+        // デフォルトコンストラクタを禁止
+        LowerBody() = delete;
+        // コピーコンストラクタを禁止
+        LowerBody(const LowerBody &) = delete;
+        // コピー代入を禁止
+        LowerBody & operator=(const LowerBody &) = delete;
+        // ムーブコンストラクタを禁止
+        LowerBody(LowerBody&&) = delete;
+        // ムーブ代入を禁止
+        LowerBody & operator=(LowerBody&&) = delete;
+        // デストラクタを定義
+        ~LowerBody() = default;
+
         /**
          * @brief 初期化子
          * @param dir1 ssr::PinType モーター1につなげるDIRピンの番号

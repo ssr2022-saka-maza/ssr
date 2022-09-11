@@ -38,6 +38,19 @@ namespace ssr {
          */
         DigitalOut dir;
 
+        // デフォルトコンストラクタを禁止
+        MotorDriver() = delete;
+        // コピーコンストラクタを禁止
+        MotorDriver(const MotorDriver &) = delete;
+        // コピー代入を禁止
+        MotorDriver & operator=(const MotorDriver &) = delete;
+        // ムーブコンストラクタを禁止
+        MotorDriver(MotorDriver&&) = delete;
+        // ムーブ代入を禁止
+        MotorDriver & operator=(MotorDriver&&) = delete;
+        // デストラクタを定義
+        ~MotorDriver() = default;
+
         /**
          * @brief 初期化子
          * @param dirPin ssr::PinType DIRにつなげるピンの番号

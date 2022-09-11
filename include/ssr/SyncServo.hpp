@@ -54,6 +54,7 @@ namespace ssr {
          * @param mirror bool サーボの角度を反転させるかどうか(trueで反転)
          */
         explicit SyncServo(bool mirror = false);
+
         /**
          * @brief Construct a new Sync Servo object
          * @param pin1 ssr::PinType サーボ1のピン
@@ -61,6 +62,17 @@ namespace ssr {
          * @param mirror bool サーボの角度を反転させるかどうか(trueで反転)
          */
         explicit SyncServo(PinType pin1, PinType pin2, bool mirror = false);
+
+        // コピーコンストラクタを禁止
+        SyncServo(const SyncServo &) = delete;
+        // コピー代入を禁止
+        SyncServo & operator=(const SyncServo &) = delete;
+        // ムーブコンストラクタを禁止
+        SyncServo(SyncServo&&) = delete;
+        // ムーブ代入を禁止
+        SyncServo & operator=(SyncServo&&) = delete;
+        // デストラクタを定義
+        ~SyncServo() = default;
 
         /**
          * @brief サーボにピンを割り当てる

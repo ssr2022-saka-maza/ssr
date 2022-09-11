@@ -73,6 +73,15 @@ namespace ssr {
             }
         }
 
+        // コピーコンストラクタを禁止
+        PS4Controller(const PS4Controller &) = delete;
+        // コピー代入を禁止
+        PS4Controller & operator=(const PS4Controller &) = delete;
+        // ムーブコンストラクタを禁止
+        PS4Controller(PS4Controller&&) = delete;
+        // ムーブ代入を禁止
+        PS4Controller & operator=(PS4Controller&&) = delete;
+
         /**
          * @brief Destroy the PS4Controller object
          */
@@ -190,6 +199,15 @@ namespace ssr {
                 _operations[i] = nullptr;
             }
         }
+
+        // コピーコンストラクタを禁止
+        PS4Controller(const PS4Controller &) = delete;
+        // コピー代入を禁止
+        PS4Controller & operator=(const PS4Controller &) = delete;
+        // ムーブコンストラクタを禁止
+        PS4Controller(PS4Controller&&) = delete;
+        // ムーブ代入を禁止
+        PS4Controller & operator=(PS4Controller&&) = delete;
 
         /**
          * @brief Destroy the PS4Controller object

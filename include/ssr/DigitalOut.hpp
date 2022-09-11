@@ -38,6 +38,19 @@ namespace ssr {
          */
         const PinType pin;
 
+        // デフォルトコンストラクタを禁止
+        DigitalOut() = delete;
+        // コピーコンストラクタを禁止
+        DigitalOut(const DigitalOut &) = delete;
+        // コピー代入を禁止
+        DigitalOut & operator=(const DigitalOut &) = delete;
+        // ムーブコンストラクタを禁止
+        DigitalOut(DigitalOut&&) = delete;
+        // ムーブ代入を禁止
+        DigitalOut & operator=(DigitalOut&&) = delete;
+        // デストラクタを定義
+        ~DigitalOut() = default;
+
         /**
          * 初期化子
          * @param pin ssr::PinType 接続ピン
