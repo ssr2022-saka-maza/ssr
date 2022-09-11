@@ -8,10 +8,6 @@ ssr::LowerBody::LowerBody(
     ssr::PinType dir3, ssr::PinType pwm3
 ) : motor1(dir1, pwm1), motor2(dir2, pwm2), motor3(dir3, pwm3) {}
 
-ssr::LowerBody::LowerBody(
-    ssr::MotorDriver motor1, ssr::MotorDriver motor2, ssr::MotorDriver motor3
-) : motor1(motor1), motor2(motor2), motor3(motor3) {}
-
 void ssr::LowerBody::begin(float v_x, float v_y, float v_theta) {
     motor1.begin();
     motor2.begin();

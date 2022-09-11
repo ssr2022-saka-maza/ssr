@@ -69,14 +69,6 @@ namespace ssr {
         );
 
         /**
-         * @brief 初期化子
-         * @param motor1 ssr::MotorDriver モーター1
-         * @param motor1 ssr::MotorDriver モーター2
-         * @param motor1 ssr::MotorDriver モーター3
-         */
-        explicit LowerBody(MotorDriver motor1, MotorDriver motor2, MotorDriver motor3);
-
-        /**
          * @note
          * # 各軸の設定など
          * x軸: 重心から正面の方向
