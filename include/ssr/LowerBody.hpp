@@ -101,6 +101,33 @@ namespace ssr {
          */
         void begin(float v_x = 0, float v_y = 0, float v_theta = 0);
 
+    private:
+        /**
+         * @brief モーターの速度をそのまま設定する
+         * @param v1 float モーター1の速度
+         * @param v2 float モーター2の速度
+         * @param v3 float モーター3の速度
+         */
+        void _setPowers_raw(float v1, float v2, float v3);
+
+        /**
+         * @brief モーターの速度を正規化して設定する
+         * @param v1 float モーター1の速度
+         * @param v2 float モーター2の速度
+         * @param v3 float モーター3の速度
+         */
+        void _setPowers_normalized(float v1, float v2, float v3);
+
+    public:
+
+        /**
+         * @brief モーターの速度を設定する
+         * @param v1 float モーター1の速度
+         * @param v2 float モーター2の速度
+         * @param v3 float モーター3の速度
+         */
+        void setPowers(float v1, float v2, float v3);
+
         /**
          * @brief 並行移動と回転を同時に設定する
          * @param v_x float 並行速度のx成分
