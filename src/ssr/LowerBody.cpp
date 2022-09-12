@@ -6,12 +6,13 @@ ssr::LowerBody::LowerBody(
     ssr::PinType dir1, ssr::PinType pwm1,
     ssr::PinType dir2, ssr::PinType pwm2,
     ssr::PinType dir3, ssr::PinType pwm3
-) : motor1(dir1, pwm1), motor2(dir2, pwm2), motor3(dir3, pwm3) {}
+) : _dir1(cos(PI / 2), sin(PI / 2)), _dir2(cos(PI * 7 / 6), sin(PI * 7 / 6)), _dir3(cos(PI * 11 / 6), sin(PI * 11 / 6)),
+    _motor1(dir1, pwm1), _motor2(dir2, pwm2), _motor3(dir3, pwm3) {}
 
 void ssr::LowerBody::begin(float v_x, float v_y, float v_theta) {
-    motor1.begin();
-    motor2.begin();
-    motor3.begin();
+    _motor1.begin();
+    _motor2.begin();
+    _motor3.begin();
     twist(v_x, v_y, v_theta);
 }
 
@@ -19,9 +20,9 @@ void ssr::LowerBody::_setPowers_raw(float v1, float v2, float v3) {
     int16_t p1 = static_cast<int16_t>(v1);
     int16_t p2 = static_cast<int16_t>(v2);
     int16_t p3 = static_cast<int16_t>(v3);
-    motor1.setPower(p1);
-    motor2.setPower(p2);
-    motor3.setPower(p3);
+    _motor1.setPower(p1);
+    _motor2.setPower(p2);
+    _motor3.setPower(p3);
     #ifdef SSR_VERBOSE
     char buffer[256] = "";
     snprintf_P(buffer, 255, PSTR("[ssr::LowerBody] set motor powers as %4d, %4d, %4d\n"), p1, p2, p3);
@@ -45,9 +46,9 @@ void ssr::LowerBody::setPowers(float v1, float v2, float v3) {
 }
 
 void ssr::LowerBody::twist(float v_x, float v_y, float v_theta) {
-    float v1 = cos(PI * 1 / 2) * v_x + sin(PI * 1 / 2) * v_y + v_theta;
-    float v2 = cos(PI * 7 / 6) * v_x + sin(PI * 7 / 6) * v_y + v_theta;
-    float v3 = cos(PI * 11 / 6) * v_x + sin(PI * 11 / 6) * v_y + v_theta;
+    float v1 = _dir1.dot(v_x, v_y) + v_theta;
+    float v2 = _dir2.dot(v_x, v_y) + v_theta;
+    float v3 = _dir3.dot(v_x, v_y) + v_theta;
     setPowers(v1, v2, v3);
 }
 

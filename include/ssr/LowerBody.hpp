@@ -16,6 +16,8 @@
  */
 #define SSR_LOWER_BODY_HPP
 
+#include <math.h>
+#include <ssr/Vector2D.hpp>
 #include <ssr/MotorDriver.hpp>
 
 /**
@@ -26,20 +28,38 @@ namespace ssr {
      * @brief 足回りを操作
      */
     class LowerBody {
-    public:
+    private:
+        /**
+         * @brief モーター1の方向
+         */
+        const Vector2D<float> _dir1;
+
+        /**
+         * @brief モーター2の方向
+         */
+        const Vector2D<float> _dir2;
+
+        /**
+         * @brief モーター3の方向
+         */
+        const Vector2D<float> _dir3;
+
         /**
          * @brief 正面のモーター
          */
-        MotorDriver motor1;
+        MotorDriver _motor1;
+
         /**
          * @brief 左後ろのモーター
          */
-        MotorDriver motor2;
+        MotorDriver _motor2;
+
         /**
          * @brief 右後ろのモーター
          */
-        MotorDriver motor3;
+        MotorDriver _motor3;
 
+    public:
         // デフォルトコンストラクタを禁止
         LowerBody() = delete;
         // コピーコンストラクタを禁止
@@ -99,7 +119,7 @@ namespace ssr {
          * @param v_y float 初期並行速度のy成分。デフォルトは0
          * @param v_theta float 中心からタイヤまでの距離*角速度 の初期値。デフォルトは0
          */
-        void begin(float v_x = 0, float v_y = 0, float v_theta = 0);
+        void begin(float v_x = 0, float v_y = 0, float v_theta = 0) noexcept;
 
     private:
         /**
@@ -108,7 +128,7 @@ namespace ssr {
          * @param v2 float モーター2の速度
          * @param v3 float モーター3の速度
          */
-        void _setPowers_raw(float v1, float v2, float v3);
+        void _setPowers_raw(float v1, float v2, float v3) noexcept;
 
         /**
          * @brief モーターの速度を正規化して設定する
@@ -116,7 +136,7 @@ namespace ssr {
          * @param v2 float モーター2の速度
          * @param v3 float モーター3の速度
          */
-        void _setPowers_normalized(float v1, float v2, float v3);
+        void _setPowers_normalized(float v1, float v2, float v3) noexcept;
 
     public:
 
@@ -126,7 +146,7 @@ namespace ssr {
          * @param v2 float モーター2の速度
          * @param v3 float モーター3の速度
          */
-        void setPowers(float v1, float v2, float v3);
+        void setPowers(float v1, float v2, float v3) noexcept;
 
         /**
          * @brief 並行移動と回転を同時に設定する
@@ -134,20 +154,20 @@ namespace ssr {
          * @param v_y float 並行速度のy成分
          * @param v_theta float 中心からタイヤまでの距離 * 角速度
          */
-        void twist(float v_x, float v_y, float v_theta);
+        void twist(float v_x, float v_y, float v_theta) noexcept;
 
         /**
          * @brief 回転なしの並行移動を設定する
          * @param v_x float 並行速度のx成分
          * @param v_y float 並行速度のy成分
          */
-        void parallel(float v_x, float v_y);
+        inline void parallel(float v_x, float v_y) noexcept;
 
         /**
          * @brief 並行移動なしで回転を設定する
          * @param v_theta float 中心からタイヤまでの距離 * 角速度
          */
-        void rotate(float v_theta);
+        inline void rotate(float v_theta) noexcept;
     }; // class LowerBody
 } // namespace ssr
 
