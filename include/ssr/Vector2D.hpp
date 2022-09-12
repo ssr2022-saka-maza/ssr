@@ -43,12 +43,11 @@ namespace ssr {
         T y;
 
         /**
-         * @brief Construct a new Vector 2 D object
+         * @brief Construct a new Vector2D object
          * @param x x成分
          * @param y y成分
          */
-        explicit Vector2D(T x = 0, T y = 0)
-            : x(x), y(y) {}
+        explicit Vector2D(T x = 0, T y = 0) : x(x), y(y) {}
 
         // デフォルトコンストラクタを禁止
         Vector2D() = delete;
@@ -65,18 +64,35 @@ namespace ssr {
 
         /**
          * @brief ベクトルとの内積
+         * @tparam U 内積の型
          * @param v 内積をとるベクトル
          * @return decltype(x * v.x + y * v.y) 内積の値
          */
-        auto dot(const Vector2D<T> v) -> decltype(x * v.x + y * v.y) {
+        template<typename U>
+        constexpr auto dot(const Vector2D<U> & v) const noexcept
+        -> decltype(x * v.x + y * v.y) {
             return x * v.x + y * v.y;
+        }
+
+        /**
+         * @brief ベクトルとの内積
+         * @tparam U 内積の型
+         * @param vx 内積をとるベクトルのx成分
+         * @param vy 内積をとるベクトルのy成分
+         * @return decltype(x * vx + y * vy)
+         */
+        template<typename U>
+        constexpr auto dot(U vx, U vy) const noexcept
+        -> decltype(x * vx + y * vy) {
+            return x * vx + y * vy;
         }
 
         /**
          * @brief ベクトルの偏角
          * @return decltype(atan2(y, x)) x軸から何ラジアン回転したか
          */
-        auto angle() -> decltype(atan2(y, x)) {
+        inline auto angle() const noexcept
+        -> decltype(atan2(y, x)) {
             return atan2(y, x);
         }
 
@@ -84,7 +100,8 @@ namespace ssr {
          * @brief ベクトルの大きさの2乗
          * @return decltype(x * x + y * y) 大きさの2乗
          */
-        auto magSq() -> decltype(x * x + y * y) {
+        constexpr auto magSq() const noexcept
+        -> decltype(x * x + y * y) {
             return x * x + y * y;
         }
 
@@ -92,7 +109,8 @@ namespace ssr {
          * @brief ベクトルの大きさ
          * @return decltype(sqrt(magSq())) ベクトルの大きさ
          */
-        auto mag() -> decltype(sqrt(magSq())) {
+        inline auto mag() const noexcept
+        -> decltype(sqrt(magSq())) {
             return sqrt(magSq());
         }
     }; // class Vector2D
