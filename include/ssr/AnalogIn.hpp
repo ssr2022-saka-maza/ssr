@@ -55,7 +55,7 @@ namespace ssr {
         /**
          * @brief ピンの初期設定。全体のsetup()内でこれを呼び出すこと
          */
-        void begin();
+        inline void begin() const noexcept;
 
         /**
          * @brief 接続したピンの値を読む

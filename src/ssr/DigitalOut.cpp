@@ -9,7 +9,7 @@ void ssr::DigitalOut::begin(bool value) {
     setValue(value);
 }
 
-bool ssr::DigitalOut::getValue() {
+bool ssr::DigitalOut::getValue() const {
     return _value;
 }
 

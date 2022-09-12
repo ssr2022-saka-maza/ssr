@@ -62,25 +62,25 @@ namespace ssr {
          * @brief ピンの初期設定。全体のsetup()でこれを呼び出すこと
          * @param value bool 初期値 デフォルトはfalse(LOW)
          */
-        void begin(bool value = false);
+        void begin(bool value = false) noexcept;
 
         /**
          * @brief 最後に設定した値を返す
          * @return bool 最後に設定した値 HIGHはtrue
          */
-        bool getValue();
+        bool getValue() const noexcept;
 
         /**
          * @brief 値を設定する
          * @param value bool 出力する値。trueでHIGH, falseでLOW
          */
-        void setValue(bool value);
+        void setValue(bool value) noexcept;
 
         /**
          * @brief 値を出力する
          * @param value bool 出力する値
          */
-        void write(bool value) override;
+        void write(bool value) noexcept override;
 
         /**
          * @brief 出力を反転させる

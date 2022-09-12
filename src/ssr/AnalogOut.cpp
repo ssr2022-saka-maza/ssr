@@ -19,7 +19,7 @@ void ssr::AnalogOut::setValue(uint16_t value) {
     #endif /* SSR_VERBOSE */
 }
 
-uint16_t ssr::AnalogOut::getValue() {
+uint16_t ssr::AnalogOut::getValue() const {
     return _value;
 }
 

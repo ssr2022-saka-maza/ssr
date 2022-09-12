@@ -3,7 +3,7 @@
 
 ssr::DigitalIn::DigitalIn(ssr::PinType pin) : pin(pin) {}
 
-void ssr::DigitalIn::begin() {
+void ssr::DigitalIn::begin() const {
     pinMode(pin, INPUT_PULLUP);
 }
 

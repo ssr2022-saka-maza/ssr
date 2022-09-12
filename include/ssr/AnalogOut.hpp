@@ -62,25 +62,25 @@ namespace ssr {
          * @brief ピンの初期設定。全体のsetup()内でこれを呼び出すこと
          * @param value uint16_t 初期値。デフォルトは0
          */
-        void begin(uint16_t value = 0);
+        void begin(uint16_t value = 0) noexcept;
 
         /**
          * @brief 値を出力する
          * @param value uint16_t 出力値。範囲は0~255
          */
-        void setValue(uint16_t value);
+        void setValue(uint16_t value) noexcept;
 
         /**
          * @brief 出力した値を得る
          * @return 最後に出力した値
          */
-        uint16_t getValue();
+        uint16_t getValue() const noexcept;
 
         /**
          * @brief 値を出力する
          * @param value uint16_t 出力する値
          */
-        void write(uint16_t value) override;
+        void write(uint16_t value) noexcept override;
     }; // class AnalogOut
 } // namespace ssr
 

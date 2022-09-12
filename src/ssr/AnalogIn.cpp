@@ -3,7 +3,7 @@
 
 ssr::AnalogIn::AnalogIn(ssr::PinType pin) : pin(pin) {}
 
-void ssr::AnalogIn::begin() {
+void ssr::AnalogIn::begin() const {
     pinMode(pin, INPUT_PULLUP);
 }
 
