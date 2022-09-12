@@ -55,17 +55,17 @@ namespace ssr {
         /**
          * @brief 初期化 全体のsetup()で呼ぶこと
          */
-        void begin();
+        void begin() noexcept;
 
         /**
          * @brief 状態更新 定期的に呼ぶこと
          */
-        void update();
+        void update() noexcept;
 
         /**
          * @brief ソレノイドを発火させる
          */
-        void fire();
+        void fire() noexcept;
     }; // class Solenoid
 } // namespace ssr
 

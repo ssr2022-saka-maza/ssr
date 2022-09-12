@@ -88,7 +88,7 @@ namespace ssr {
          * @brief 平均値を取得する
          * @return T 現在保持している値の平均 値を1つも保持していない場合は0
          */
-        virtual T read() const noexcept override {
+        virtual T read() noexcept override {
             if (_index == 0) {
                 return static_cast<T>(0);
             }

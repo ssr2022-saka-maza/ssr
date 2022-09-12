@@ -80,19 +80,19 @@ namespace ssr {
          * @param pin2 ssr::PinType サーボ2に割り当てるピン
          * @return uint16_t (servo2.attach(pin2) << 8) | servo1.attach(pin1)
          */
-        uint16_t attach(PinType pin1, PinType pin2);
+        uint16_t attach(PinType pin1, PinType pin2) noexcept;
 
         /**
          * @brief 角度を設定する
          * @param value uint8_t サーボ1に設定する角度 サーボ2の角度はmirroredの値次第で変わる
          */
-        virtual void write(uint8_t value) override;
+        virtual void write(uint8_t value) noexcept override;
 
         /**
          * @brief 角度を読む
          * @return int サーボ1の角度 同期できていない場合は-1
          */
-        virtual int16_t read() override;
+        virtual int16_t read() noexcept override;
     }; // class SyncServo
 } // namespace ssr
 
