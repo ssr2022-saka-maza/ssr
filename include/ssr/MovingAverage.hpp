@@ -88,7 +88,7 @@ namespace ssr {
          * @brief 平均値を取得する
          * @return T 現在保持している値の平均 値を1つも保持していない場合は0
          */
-        virtual T read() override {
+        virtual T read() const noexcept override {
             if (_index == 0) {
                 return static_cast<T>(0);
             }
@@ -102,7 +102,7 @@ namespace ssr {
          * @brief 値を追加する
          * @param value 追加する値
          */
-        virtual void write(T value) override {
+        virtual void write(T value) noexcept override {
             _values_sum += value - _values[_index];
             _values[_index] = value;
             _index++;
