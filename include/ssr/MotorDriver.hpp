@@ -28,15 +28,17 @@ namespace ssr {
      * @brief モータードライバを使う型 MD10C R3(CYTRON TECHNOLOGY)対応
      */
     class MotorDriver : public Output<int16_t> {
-    public:
+    private:
         /**
          * @brief PWMに接続するピン
          */
-        AnalogOut pwm;
+        AnalogOut _pwm;
         /**
          * @brief DIRに接続するピン
          */
-        DigitalOut dir;
+        DigitalOut _dir;
+
+    public:
 
         // デフォルトコンストラクタを禁止
         MotorDriver() = delete;
@@ -62,25 +64,25 @@ namespace ssr {
          * @brief 初期設定。全体のsetup()内でこれを呼び出すこと
          * @param power int16_t 初期パワー。デフォルトは0
          */
-        void begin(int16_t power = 0);
+        void begin(int16_t power = 0) noexcept;
 
         /**
          * @brief 出力したパワーを得る
          * @return int16_t 最後に出力したパワー
          */
-        int16_t getPower();
+        int16_t getPower() const noexcept;
 
         /**
          * @brief パワーを出力する
          * @param power int16_t 出力するパワー。範囲は-255~255
          */
-        void setPower(int16_t power);
+        void setPower(int16_t power) noexcept;
 
         /**
          * @brief パワーを出力する
          * @param value int16_t 出力するパワー。範囲は-255~255
          */
-        void write(int16_t value) override;
+        void write(int16_t value) noexcept override;
     }; // class MotorDriver
 } // namespace ssr
 
