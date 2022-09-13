@@ -198,4 +198,22 @@ namespace ssr {
     }; // struct PS4Value
 } // namespace ssr
 
+/**
+ * @brief equal comparison operator
+ * @param lhs left hand side
+ * @param rhs right hand side
+ * @return true equal
+ * @return false not equal
+ */
+bool operator==(const ssr::PS4Value & lhs, const ssr::PS4Value & rhs);
+
+/**
+ * @brief not equal comparison operator
+ * @param lhs left hand side
+ * @param rhs right hand side
+ * @return true not equal
+ * @return false equal
+ */
+bool operator!=(const ssr::PS4Value & lhs, const ssr::PS4Value & rhs);
+
 #endif /* SSR_PS4_VALUE_HPP */

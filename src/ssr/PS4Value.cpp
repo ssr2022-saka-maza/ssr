@@ -43,3 +43,21 @@ ssr::PS4Value::PS4Value(
     finger2Touch(finger2Touch), finger2Pos(finger2Pos_x, finger2Pos_y),
     pitch(pitch), roll(roll)
 {}
+
+bool operator==(const ssr::PS4Value& lhs, const ssr::PS4Value& rhs) {
+    return (
+        lhs.lstick == rhs.lstick && lhs.rstick == rhs.rstick
+        && lhs.up == rhs.up && lhs.right == rhs.right && lhs.down == rhs.down && lhs.left == rhs.left
+        && lhs.triangle == rhs.triangle && lhs.circle == rhs.circle && lhs.cross == rhs.cross && lhs.square == rhs.square
+        && lhs.l1 == rhs.l1 && lhs.l2 == rhs.l2 && lhs.l3 == rhs.l3
+        && lhs.r1 == rhs.r1 && lhs.r2 == rhs.r2 && lhs.r3 == rhs.r3
+        && lhs.ps == rhs.ps && lhs.share == rhs.share && lhs.options == rhs.options
+        && lhs.finger1Touch == rhs.finger1Touch && lhs.finger1Pos == rhs.finger1Pos
+        && lhs.finger2Touch == rhs.finger2Touch && lhs.finger2Pos == rhs.finger2Pos
+        && lhs.pitch == rhs.pitch && lhs.roll == rhs.roll
+    );
+}
+
+bool operator!=(const ssr::PS4Value& lhs, const ssr::PS4Value& rhs) {
+    return !(lhs == rhs);
+}
